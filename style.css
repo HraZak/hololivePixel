@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap');
+body{
+    background-color: #8cc8e4;
+    font-family: 'Roboto Mono', monospace;
+    user-select: none;
+}
+.grid{
+    margin: 22px;
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    gap: 22px 80px;
+    grid-template-columns: repeat(4, 164px);
+}
+.mainPhoto{
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 914px;
+}
+.fotky{
+    position: relative;
+    width: 164px;
+    height: 220px;
+}
+.kniha{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.strankaPozadi{
+    position: absolute;
+    width: 272px;
+    height: 220px;
+    padding: 6px;
+    border-radius: 5px;
+    border: 2px solid #494930;
+    left: -60px;
+    bottom: -8px;
+    background-color: #ffffd9;
+    transform: scale(0);
+    z-index: 1;
+    transition: all .2s ease-in-out;
+}
+.stranka{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+.druha{
+    left: 150px;
+}
+footer{
+    grid-column: 1 / -1;
+    text-align: center;
+}
+.fotky:hover .strankaPozadi, .fotky:hover .stranka{
+    transform: scale(1);
+}
+@media screen and (max-width: 1039px) {
+    .grid{
+        grid-template-columns: repeat(3, 164px);
+    }
+}
+@media screen and (max-width: 795px) {
+    .grid{
+        grid-template-columns: repeat(2, 164px);
+    }
+    footer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    footer img{
+        visibility: hidden;
+    }
+}
+@media screen and (max-width: 551px) {
+    .grid{
+        grid-template-columns: 164px;
+    }
+}

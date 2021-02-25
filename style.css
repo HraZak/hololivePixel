@@ -1,81 +1,102 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap');
+@keyframes aniBear{
+    0%{
+        top: 28px;
+    }
+    100%{
+        top: 40px;
+    }
+}
 body{
     background-color: #8cc8e4;
     font-family: 'Roboto Mono', monospace;
     user-select: none;
 }
 .grid{
-    margin: 22px;
+    margin: 22px 0;
     display: grid;
     justify-items: center;
+    align-items: center;
     justify-content: center;
-    gap: 22px 80px;
-    grid-template-columns: repeat(4, 164px);
+    gap: 22px 0;
+    grid-template-columns: repeat(8, 284px);
 }
 .mainPhoto{
     grid-column: 1 / -1;
     width: 100%;
     max-width: 914px;
 }
-.fotky{
+.photos{
     position: relative;
-    width: 164px;
-    height: 220px;
 }
-.kniha{
+.page{
     position: absolute;
-    bottom: 0;
-    left: 0;
-}
-.strankaPozadi{
-    position: absolute;
-    width: 272px;
-    height: 220px;
-    padding: 6px;
+    width: 280px;
+    height: 232px;
     border-radius: 5px;
     border: 2px solid #494930;
     left: -60px;
     bottom: -8px;
     background-color: #ffffd9;
-    transform: scale(0);
+    transform: scale(0,1);
     z-index: 1;
     transition: all .2s ease-in-out;
 }
-.stranka{
+.first, .second{
     position: absolute;
     top: 6px;
+}
+.first{
     left: 6px;
 }
-.druha{
-    left: 150px;
+.second{
+    right: 6px;
+}
+.firstBear, .secondBear{
+    position: absolute;
+    top: 28px;
+    z-index: 1;
+    animation-name: aniBear;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+.firstBear{
+    left: 116px;
+}
+.secondBear{
+    left: 266px;
 }
 footer{
-    grid-column: 1 / -1;
+    grid-column: 2 / -2;
+    justify-self: stretch;
     text-align: center;
+    display: flex;
+    justify-content:space-around;
 }
-.fotky:hover .strankaPozadi, .fotky:hover .stranka{
+footer a{
+    color: #0000ee;
+}
+footer img{
+    height: 1em;
+}
+.photos:hover .page{
     transform: scale(1);
 }
-@media screen and (max-width: 1039px) {
+@media screen and (max-width: 2272px) {
     .grid{
-        grid-template-columns: repeat(3, 164px);
+        grid-template-columns: repeat(auto-fill, 284px);
     }
 }
-@media screen and (max-width: 795px) {
-    .grid{
-        grid-template-columns: repeat(2, 164px);
-    }
+@media screen and (max-width: 1437px) {
     footer{
-        display: flex;
+        grid-column: 1 / -1;
+    }
+}
+@media screen and (max-width: 869px) {
+    footer{
         flex-direction: column;
         align-items: center;
-    }
-    footer img{
-        visibility: hidden;
-    }
-}
-@media screen and (max-width: 551px) {
-    .grid{
-        grid-template-columns: 164px;
     }
 }

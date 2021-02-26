@@ -7,6 +7,14 @@
         top: 40px;
     }
 }
+@keyframes aniBearMini{
+    0%{
+        top: 14px;
+    }
+    100%{
+        top: 20px;
+    }
+}
 body{
     background-color: #8cc8e4;
     font-family: 'Roboto Mono', monospace;
@@ -66,7 +74,7 @@ body{
     left: 116px;
 }
 .secondBear{
-    left: 266px;
+    right: -12px;
 }
 footer{
     grid-column: 2 / -2;
@@ -98,5 +106,49 @@ footer img{
     footer{
         flex-direction: column;
         align-items: center;
+    }
+}
+@media screen and (max-width: 584px){
+    .grid{
+        margin: 11px 0;
+        gap: 11px 0;
+        grid-template-columns: repeat(auto-fill, 142px);
+    }
+    .page{
+        width: 140px;
+        height: 116px;
+        border-radius: 3px;
+        border: 1px solid #494930;
+        left: -30px;
+        bottom: -4px;
+    }
+    .photos > img{
+        width: 82px;
+    }
+    .page > img{
+        width: 64px;
+    }
+    .first, .second{
+        top: 3px;
+    }
+    .first{
+        left: 3px;
+    }
+    .second{
+        right: 3px;
+    }
+    .page > .firstBear, .page > .secondBear{
+        top: 14px;
+        width: 15px;
+        animation-name: aniBearMini;
+    }
+    .firstBear{
+        left: 58px;
+    }
+    .secondBear{
+        right: -6px;
+    }
+    footer{
+        font-size: 0.75em;
     }
 }

@@ -17,17 +17,16 @@
 }
 body{
     background-color: #8cc8e4;
-    font-family: 'Roboto Mono', monospace;
     user-select: none;
 }
 .grid{
-    margin: 22px 0;
+    margin: 22px 75px;
     display: grid;
     justify-items: center;
     align-items: center;
     justify-content: center;
-    gap: 22px 0;
-    grid-template-columns: repeat(8, 284px);
+    gap: 22px 75px;
+    grid-template-columns: repeat(8, 164px);
 }
 .mainPhoto{
     grid-column: 1 / -1;
@@ -49,6 +48,9 @@ body{
     transform: scale(0,1);
     z-index: 1;
     transition: all .2s ease-in-out;
+}
+.photos:hover .page{
+    transform: scale(1);
 }
 .first, .second{
     position: absolute;
@@ -81,7 +83,8 @@ footer{
     justify-self: stretch;
     text-align: center;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
+    font-family: 'Roboto Mono', monospace;
 }
 footer a{
     color: #0000ee;
@@ -89,12 +92,9 @@ footer a{
 footer img{
     height: 1em;
 }
-.photos:hover .page{
-    transform: scale(1);
-}
 @media screen and (max-width: 2272px) {
     .grid{
-        grid-template-columns: repeat(auto-fill, 284px);
+        grid-template-columns: repeat(auto-fill, 164px);
     }
 }
 @media screen and (max-width: 1437px) {
@@ -106,19 +106,20 @@ footer img{
     footer{
         flex-direction: column;
         align-items: center;
+        line-height: 1.5em;
     }
 }
 @media screen and (max-width: 584px){
     .grid{
-        margin: 11px 0;
-        gap: 11px 0;
-        grid-template-columns: repeat(auto-fill, 142px);
+        margin: 11px 37px;
+        gap: 11px 37px;
+        grid-template-columns: repeat(auto-fill, 82px);
     }
     .page{
         width: 140px;
         height: 116px;
         border-radius: 3px;
-        border: 1px solid #494930;
+        border-width: 1px;
         left: -30px;
         bottom: -4px;
     }

@@ -95,6 +95,7 @@ footer img{
 @media screen and (max-width: 2272px) {
     .grid{
         grid-template-columns: repeat(auto-fill, 164px);
+        justify-content: space-evenly;
     }
 }
 @media screen and (max-width: 1437px) {

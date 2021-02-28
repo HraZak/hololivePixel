@@ -36,6 +36,10 @@ body{
 .photos{
     position: relative;
 }
+.photos > img{
+    width: 164px;
+    height: 218px;
+}
 .page{
     position: absolute;
     width: 280px;
@@ -52,15 +56,31 @@ body{
 .photos:hover .page{
     transform: scale(1);
 }
+.page > img{
+    width: 128px;
+    height: 220px;
+}
+.pekora > img{
+    height: 222px;
+}
 .first, .second{
     position: absolute;
-    top: 6px;
+    bottom: 6px;
 }
 .first{
     left: 6px;
 }
 .second{
     right: 6px;
+}
+.page > .firstBear, .page > .secondBear{
+    width: 30px;
+}
+.page > .firstBear{
+    height: 38px;
+}
+.page > .secondBear{
+    height: 40px;
 }
 .firstBear, .secondBear{
     position: absolute;
@@ -126,12 +146,17 @@ footer img{
     }
     .photos > img{
         width: 82px;
+        height: 109px;
     }
     .page > img{
         width: 64px;
+        height: 110px;
+    }
+    .pekora > img{
+        height: 111px;
     }
     .first, .second{
-        top: 3px;
+        bottom: 3px;
     }
     .first{
         left: 3px;
@@ -143,6 +168,12 @@ footer img{
         top: 14px;
         width: 15px;
         animation-name: aniBearMini;
+    }
+    .page > .firstBear{
+        height: 19px;
+    }
+    .page > .secondBear{
+        height: 20px;
     }
     .firstBear{
         left: 58px;

@@ -15,6 +15,14 @@
         top: 20px;
     }
 }
+@keyframes aniCreatePage{
+    0%{
+        transform: scale(0,1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
 body{
     background-color: #8cc8e4;
     user-select: none;
@@ -60,6 +68,11 @@ noscript > div{
     background-color: #ffffd9;
     transform: scale(0,1);
     z-index: 1;
+    animation-name: aniCreatePage;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
     transition: all .2s ease-in-out;
 }
 .photos:hover .page{

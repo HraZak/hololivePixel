@@ -35,8 +35,8 @@ const characters = [
 
             const secondBear = document.createElement('img');
             secondBear.className = 'secondBear';
-            secondBear.src = `yukihanaLamy/bear1.webp`;
-            secondBear.alt = `Yukihana Lamy - Bear - front view`;
+            secondBear.src = `yukihanaLamy/bear2.webp`;
+            secondBear.alt = `Yukihana Lamy - Bear - side view`;
             page.appendChild(secondBear);
         }
     },

@@ -15,7 +15,7 @@ const characters = [
     { name: 'Natsuiro Matsuri', folder: 'natsuiroMatsuri' },
     { name: 'Yuzuki Choco', folder: 'yuzukiChoco' },
     { name: 'Shirakami Fubuki', folder: 'shirakamiFubuki' },
-    { name: 'Usada Pekora', folder: 'usadaPekora', special: function (page) { page.className += ' pekora' } },
+    { name: 'Usada Pekora', folder: 'usadaPekora', special: function (page) { page.classList.add('pekora') } },
     { name: 'Amane Kanata', folder: 'amaneKanata' },
     { name: 'Oozora Subaru', folder: 'oozoraSubaru' },
     { name: 'AZKi', folder: 'azki' },
@@ -49,14 +49,17 @@ const characters = [
 
 const footer = document.querySelector('footer');
 
-function createPhotos(character) {
-    const photos = document.createElement('div');
-    photos.className = 'photos';
+function searchFolder(folderName) {
+    for (let character of characters) {
+        if (character.folder === folderName)
+            return character;
+    }
+}
 
-    const book = document.createElement('img');
-    book.src = `${character.folder}/book.webp`;
-    book.alt = `${character.name} - book`;
-    photos.appendChild(book);
+function createPage(event) {
+    const photos = event.target;
+
+    const character = searchFolder(photos.id);
 
     const page = document.createElement('div');
     page.className = 'page';
@@ -79,9 +82,30 @@ function createPhotos(character) {
 
     photos.appendChild(page);
 
+    photos.removeEventListener(
+        'mouseenter',
+        createPage
+    )
+}
+
+function createPhotos(character) {
+    const photos = document.createElement('div');
+    photos.className = 'photos';
+    photos.id = character.folder;
+
+    photos.addEventListener(
+        'mouseenter',
+        createPage
+    )
+
+    const book = document.createElement('img');
+    book.src = `${character.folder}/book.webp`;
+    book.alt = `${character.name} - book`;
+    photos.appendChild(book);
+
     footer.insertAdjacentElement('beforebegin', photos);
 }
 
 for (let character of characters) {
     createPhotos(character);
-};
+}

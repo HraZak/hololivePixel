@@ -19,6 +19,15 @@ body{
     background-color: #8cc8e4;
     user-select: none;
 }
+noscript > div{
+    display: block;
+    font-size: xx-large;
+    color: #ff0000;
+    background-color: #ffff00;
+    padding: 1em;
+    border-radius: 0 0 1em 1em;
+    text-align: center;
+}
 .grid{
     margin: 22px 75px;
     display: grid;

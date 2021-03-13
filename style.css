@@ -99,7 +99,7 @@ body{
     right: -12px;
 }
 footer{
-    grid-column: 2 / -2;
+    grid-column: 1 / -1;
     justify-self: stretch;
     text-align: center;
     display: flex;
@@ -121,11 +121,6 @@ footer img{
     .grid{
         grid-template-columns: repeat(auto-fill, 164px);
         justify-content: space-evenly;
-    }
-}
-@media screen and (max-width: 1437px) {
-    footer{
-        grid-column: 1 / -1;
     }
 }
 @media screen and (max-width: 869px) {

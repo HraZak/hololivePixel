@@ -29,13 +29,13 @@ const characters = [
         name: 'Yukihana Lamy', folder: 'yukihanaLamy', special: function (page) {
             const firstBear = document.createElement('img');
             firstBear.className = 'firstBear';
-            firstBear.src = `yukihanaLamy/bear1.webp`;
+            firstBear.src = `img/yukihanaLamy/bear1.webp`;
             firstBear.alt = `Yukihana Lamy - Bear - front view`;
             page.appendChild(firstBear);
 
             const secondBear = document.createElement('img');
             secondBear.className = 'secondBear';
-            secondBear.src = `yukihanaLamy/bear2.webp`;
+            secondBear.src = `img/yukihanaLamy/bear2.webp`;
             secondBear.alt = `Yukihana Lamy - Bear - side view`;
             page.appendChild(secondBear);
         }
@@ -47,41 +47,28 @@ const characters = [
     { name: 'Himemori Luna', folder: 'himemoriLuna' }
 ];
 
+let loadedImg = 0;
+
 const footer = document.querySelector('footer');
 
-function searchFolder(folderName) {
-    for (let character of characters) {
-        if (character.folder === folderName)
-            return character;
+function createPage(character) {
+    const photos = document.getElementById(`${character.folder}`);
+
+    document.querySelector(`#${photos.id} div.page img.first`).src = `img/${character.folder}/1.webp`;
+    document.querySelector(`#${photos.id} div.page img.second`).src = `img/${character.folder}/2.webp`;
+
+    if (character.special) {
+        character.special(document.querySelector(`#${photos.id} div.page`));
     }
 }
 
-function createPage(event) {
-    const photos = event.target;
-
-    const character = searchFolder(photos.id);
-    const page = document.querySelector(`#${photos.id} div.page`);
-
-    const first = document.createElement('img');
-    first.className = 'first';
-    first.src = `${character.folder}/1.webp`;
-    first.alt = `${character.name} - front view`;
-    page.appendChild(first);
-
-    const second = document.createElement('img');
-    second.className = 'second';
-    second.src = `${character.folder}/2.webp`;
-    second.alt = `${character.name} - side view`;
-    page.appendChild(second);
-
-    if (character.special) {
-        character.special(page);
+function addLoadedImg() {
+    loadedImg++;
+    if (loadedImg === characters.length) {
+        for (let character of characters) {
+            createPage(character);
+        }
     }
-
-    photos.removeEventListener(
-        'mouseenter',
-        createPage
-    )
 }
 
 function createPhotos(character) {
@@ -89,19 +76,30 @@ function createPhotos(character) {
     photos.className = 'photos';
     photos.id = character.folder;
 
-    photos.addEventListener(
-        'mouseenter',
-        createPage
-    )
-
     const book = document.createElement('img');
-    book.src = `${character.folder}/book.webp`;
+    book.src = `img/${character.folder}/book.webp`;
     book.alt = `${character.name} - book`;
+    book.addEventListener(
+        'load',
+        addLoadedImg
+    )
     photos.appendChild(book);
 
     const page = document.createElement('div');
     page.className = 'page';
     photos.appendChild(page);
+
+    const first = document.createElement('img');
+    first.className = 'first';
+    first.src = '';
+    first.alt = `${character.name} - front view`;
+    page.appendChild(first);
+
+    const second = document.createElement('img');
+    second.className = 'second';
+    second.src = '';
+    second.alt = `${character.name} - side view`;
+    page.appendChild(second);
 
     footer.insertAdjacentElement('beforebegin', photos);
 }

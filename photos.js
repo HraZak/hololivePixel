@@ -60,9 +60,7 @@ function createPage(event) {
     const photos = event.target;
 
     const character = searchFolder(photos.id);
-
-    const page = document.createElement('div');
-    page.className = 'page';
+    const page = document.querySelector(`#${photos.id} div.page`);
 
     const first = document.createElement('img');
     first.className = 'first';
@@ -79,8 +77,6 @@ function createPage(event) {
     if (character.special) {
         character.special(page);
     }
-
-    photos.appendChild(page);
 
     photos.removeEventListener(
         'mouseenter',
@@ -102,6 +98,10 @@ function createPhotos(character) {
     book.src = `${character.folder}/book.webp`;
     book.alt = `${character.name} - book`;
     photos.appendChild(book);
+
+    const page = document.createElement('div');
+    page.className = 'page';
+    photos.appendChild(page);
 
     footer.insertAdjacentElement('beforebegin', photos);
 }

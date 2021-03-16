@@ -51,7 +51,7 @@ let loadedImg = 0;
 
 const footer = document.querySelector('footer');
 
-function createPage(character) {
+function changeSrc(character) {
     const photos = document.getElementById(`${character.folder}`);
 
     document.querySelector(`#${photos.id} div.page img.first`).src = `img/${character.folder}/1.webp`;
@@ -66,7 +66,7 @@ function addLoadedImg() {
     loadedImg++;
     if (loadedImg === characters.length) {
         for (let character of characters) {
-            createPage(character);
+            changeSrc(character);
         }
     }
 }
@@ -81,6 +81,10 @@ function createPhotos(character) {
     book.alt = `${character.name} - book`;
     book.addEventListener(
         'load',
+        addLoadedImg
+    )
+    book.addEventListener(
+        'error',
         addLoadedImg
     )
     photos.appendChild(book);

@@ -15,6 +15,25 @@
         top: 20px;
     }
 }
+@keyframes aniJumping{
+    0%, 10%, 20%, 100%{
+        transform: translateY(0)
+    }
+    5%, 15%{
+        transform: translateY(-10px)
+    }
+}
+@keyframes aniShake{
+    0%, 4%, 8%, 12%, 16%, 100%{
+        transform: rotate(0deg);
+    }
+    6%, 14%{
+        transform: rotate(-3deg);
+    }
+    2%, 10%{
+        transform: rotate(3deg);
+    }
+}
 body{
     background-color: #8cc8e4;
     user-select: none;
@@ -27,6 +46,14 @@ noscript > div{
     padding: 1em;
     border-radius: 0 0 1em 1em;
     text-align: center;
+}
+.loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background-color: #0000ee;
 }
 .grid{
     margin: 22px 75px;
@@ -48,6 +75,13 @@ noscript > div{
 .photos > img{
     width: 164px;
     height: 218px;
+}
+.photos > img.shake{
+    animation-name: aniShake;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
 }
 .page{
     position: absolute;

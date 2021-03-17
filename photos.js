@@ -68,6 +68,7 @@ function changeSrc(character) {
         'error',
         increaseLoading
     )
+
     second.src = `img/${character.folder}/2.webp`;
     second.addEventListener(
         'load',
@@ -84,22 +85,29 @@ function changeSrc(character) {
 }
 
 function addLoadedImg(event) {
-    event.target.removeEventListener(
-        'load',
-        addLoadedImg
-    )
-    event.target.removeEventListener(
-        'error',
-        addLoadedImg
-    )
     loadedImg++;
     if (loadedImg === characters.length) {
         for (let character of characters) {
             changeSrc(character);
         }
     }
+
+    event.target.removeEventListener(
+        'load',
+        addLoadedImg
+    )
+    event.target.removeEventListener(
+        'error',
+        addLoadedImg
+    )
 }
 function increaseLoading(event) {
+    loadingPer += oneLoadingPer;
+    loading.style.width = `${loadingPer}%`;
+    if (loadingPer >= 100) {
+        loading.style.display = 'none';
+    }
+
     event.target.removeEventListener(
         'load',
         increaseLoading
@@ -108,11 +116,16 @@ function increaseLoading(event) {
         'error',
         increaseLoading
     )
-    loadingPer += oneLoadingPer;
-    loading.style.width = `${loadingPer}%`;
-    if (loadingPer >= 100) {
-        loading.style.display = 'none';
-    }
+}
+function unhideBookmark(event) {
+    const photos = document.getElementById(event.target.id);
+
+    document.querySelector(`#${photos.id} div.bookmark`).classList.remove('hide');
+
+    photos.removeEventListener(
+        'mouseleave',
+        unhideBookmark
+    )
 }
 
 function createPhotos(character) {
@@ -122,6 +135,10 @@ function createPhotos(character) {
     photos.addEventListener(
         'mouseenter',
         removeShake
+    )
+    photos.addEventListener(
+        'mouseleave',
+        unhideBookmark
     )
 
     const book = document.createElement('img');
@@ -144,6 +161,10 @@ function createPhotos(character) {
         increaseLoading
     )
     photos.appendChild(book);
+
+    const bookmark = document.createElement('div');
+    bookmark.classList.add('bookmark', 'hide');
+    photos.appendChild(bookmark);
 
     const page = document.createElement('div');
     page.className = 'page';
@@ -173,6 +194,7 @@ firstCharacter.classList.add('shake');
 
 function removeShake() {
     firstCharacter.classList.remove('shake');
+
     for (let photo of document.getElementsByClassName('photos')) {
         photo.removeEventListener(
             'mouseenter',

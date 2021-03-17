@@ -15,14 +15,6 @@
         top: 20px;
     }
 }
-@keyframes aniJumping{
-    0%, 10%, 20%, 100%{
-        transform: translateY(0)
-    }
-    5%, 15%{
-        transform: translateY(-10px)
-    }
-}
 @keyframes aniShake{
     0%, 4%, 8%, 12%, 16%, 100%{
         transform: rotate(0deg);
@@ -51,7 +43,7 @@ noscript > div{
     position: absolute;
     top: 0;
     left: 0;
-    width: 0%;
+    width: 0;
     height: 5px;
     background-color: #0000ee;
 }
@@ -59,7 +51,7 @@ noscript > div{
     margin: 22px 75px;
     display: grid;
     justify-items: center;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     gap: 22px 75px;
     grid-template-columns: repeat(8, 164px);
@@ -71,17 +63,34 @@ noscript > div{
 }
 .photos{
     position: relative;
-}
-.photos > img{
     width: 164px;
     height: 218px;
+}
+.photos > img{
+    position: absolute;
+    bottom: 0;
+    width: 164px;
+    height: 208px;
+}
+.photos > div.bookmark{
+    position: absolute;
+    top: 0;
+    right: 8px;
+    background-color: #ffffd9;
+    width: 36px;
+    height: 8px;
+    border: 2px solid #47159d;
+    border-bottom: none;
 }
 .photos > img.shake{
     animation-name: aniShake;
     animation-duration: 3s;
     animation-delay: 1s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
+    animation-timing-function: linear;
+}
+.photos > div.hide{
+    display: none;
 }
 .page{
     position: absolute;
@@ -187,9 +196,26 @@ footer img{
         left: -30px;
         bottom: -4px;
     }
-    .photos > img{
+    .photos{
         width: 82px;
         height: 109px;
+    }
+    
+    .photos > img{
+        position: absolute;
+        bottom: 0;
+        width: 82px;
+        height: 104px;
+    }
+    .photos > div.bookmark{
+        position: absolute;
+        top: 0;
+        right: 4px;
+        background-color: #ffffd9;
+        width: 18px;
+        height: 4px;
+        border: 1px solid #47159d;
+        border-bottom: none;
     }
     .page > img{
         width: 64px;

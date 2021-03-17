@@ -48,21 +48,50 @@ const characters = [
 ];
 
 let loadedImg = 0;
+let loadingPer = 0;
+const oneLoadingPer = 100 / (characters.length * 3);
 
 const footer = document.querySelector('footer');
+const loading = document.getElementById('loading');
 
 function changeSrc(character) {
     const photos = document.getElementById(`${character.folder}`);
+    const first = document.querySelector(`#${photos.id} div.page img.first`)
+    const second = document.querySelector(`#${photos.id} div.page img.second`)
 
-    document.querySelector(`#${photos.id} div.page img.first`).src = `img/${character.folder}/1.webp`;
-    document.querySelector(`#${photos.id} div.page img.second`).src = `img/${character.folder}/2.webp`;
+    first.src = `img/${character.folder}/1.webp`;
+    first.addEventListener(
+        'load',
+        increaseLoading
+    )
+    first.addEventListener(
+        'error',
+        increaseLoading
+    )
+    second.src = `img/${character.folder}/2.webp`;
+    second.addEventListener(
+        'load',
+        increaseLoading
+    )
+    second.addEventListener(
+        'error',
+        increaseLoading
+    )
 
     if (character.special) {
         character.special(document.querySelector(`#${photos.id} div.page`));
     }
 }
 
-function addLoadedImg() {
+function addLoadedImg(event) {
+    event.target.removeEventListener(
+        'load',
+        addLoadedImg
+    )
+    event.target.removeEventListener(
+        'error',
+        addLoadedImg
+    )
     loadedImg++;
     if (loadedImg === characters.length) {
         for (let character of characters) {
@@ -70,11 +99,30 @@ function addLoadedImg() {
         }
     }
 }
+function increaseLoading(event) {
+    event.target.removeEventListener(
+        'load',
+        increaseLoading
+    )
+    event.target.removeEventListener(
+        'error',
+        increaseLoading
+    )
+    loadingPer += oneLoadingPer;
+    loading.style.width = `${loadingPer}%`;
+    if (loadingPer >= 100) {
+        loading.style.display = 'none';
+    }
+}
 
 function createPhotos(character) {
     const photos = document.createElement('div');
     photos.className = 'photos';
     photos.id = character.folder;
+    photos.addEventListener(
+        'mouseenter',
+        removeShake
+    )
 
     const book = document.createElement('img');
     book.src = `img/${character.folder}/book.webp`;
@@ -86,6 +134,14 @@ function createPhotos(character) {
     book.addEventListener(
         'error',
         addLoadedImg
+    )
+    book.addEventListener(
+        'load',
+        increaseLoading
+    )
+    book.addEventListener(
+        'error',
+        increaseLoading
     )
     photos.appendChild(book);
 
@@ -110,4 +166,17 @@ function createPhotos(character) {
 
 for (let character of characters) {
     createPhotos(character);
+}
+
+const firstCharacter = document.querySelector(`#${characters[0].folder} img`);
+firstCharacter.classList.add('shake');
+
+function removeShake() {
+    firstCharacter.classList.remove('shake');
+    for (let photo of document.getElementsByClassName('photos')) {
+        photo.removeEventListener(
+            'mouseenter',
+            removeShake
+        )
+    }
 }

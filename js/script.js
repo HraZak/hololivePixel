@@ -55,13 +55,12 @@ const characters = [
 ];
 let loadedImg = 0;
 function changeSrc(character) {
-    const photos = document.getElementById(character.folder);
-    const first = document.querySelector(`#${photos.id} div.page img.first`);
-    const second = document.querySelector(`#${photos.id} div.page img.second`);
+    const first = document.querySelector(`#${character.folder} div.page img.first`);
+    const second = document.querySelector(`#${character.folder} div.page img.second`);
     first.src = `./img/${character.folder}/1.webp`;
     second.src = `./img/${character.folder}/2.webp`;
     if (character.special) {
-        character.special(document.querySelector(`#${photos.id} div.page`));
+        character.special(document.querySelector(`#${character.folder} div.page`));
     }
 }
 function addLoadedImg(event) {
@@ -71,8 +70,8 @@ function addLoadedImg(event) {
             changeSrc(character);
         }
     }
-    event.target.removeEventListener('load', addLoadedImg);
-    event.target.removeEventListener('error', addLoadedImg);
+    event.currentTarget.removeEventListener('load', addLoadedImg);
+    event.currentTarget.removeEventListener('error', addLoadedImg);
 }
 function unhideBookmark(event) {
     document.querySelector(`#${event.currentTarget.id} div.bookmark`).classList.remove('hide');
@@ -80,11 +79,11 @@ function unhideBookmark(event) {
 }
 function createPhotos(character) {
     const photos = document.createElement('div');
-    footer.before(photos);
     photos.classList.add('photos');
     photos.id = character.folder;
     photos.addEventListener('mouseenter', removeShake);
     photos.addEventListener('mouseleave', unhideBookmark);
+    footer.before(photos);
     const book = document.createElement('img');
     book.src = `./img/${character.folder}/book.webp`;
     book.alt = `${character.name} - book`;

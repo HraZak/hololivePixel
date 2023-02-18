@@ -13,3 +13,9 @@ This is a fan-made website, and does NOT represent the interests of Hololive Pro
 ```Shell
 sass --style=compressed --no-source-map style.scss style.css
 ```
+
+### TypeScript
+
+```Shell
+tsc
+```

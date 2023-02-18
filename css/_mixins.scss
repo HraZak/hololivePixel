@@ -1,0 +1,30 @@
+@mixin animation($name, $duration: 0s, $timing-function: ease, $delay: 0s, $iteration-count: 1, $direction: normal, $fill-mode: none, $play-state: running) {
+    animation: {
+        name: $name;
+        duration: $duration;
+        timing-function: $timing-function;
+        delay: $delay;
+        iteration-count: $iteration-count;
+        direction: $direction;
+        fill-mode: $fill-mode;
+        play-state: $play-state;
+    }
+}
+@mixin flex-conteiner($direction: row, $wrap: nowrap, $justify-content: flex-start, $align-items: stretch, $align-content: normal) {
+    display: flex;
+    flex: {
+        direction: $direction;
+        wrap: $wrap;
+    }
+    justify-content: $justify-content;
+    align-items: $align-items;
+    align-content: $align-content;
+}
+@mixin transition($property, $duration: 0s, $timing-function: ease, $delay: 0s) {
+    transition: {
+        property: $property;
+        duration: $duration;
+        timing-function: $timing-function;
+        delay: $delay;
+    }
+}

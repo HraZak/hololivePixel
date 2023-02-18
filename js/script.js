@@ -1,3 +1,4 @@
+"use strict";
 const footer = document.getElementById('footer');
 const characters = [
     { name: 'Tokino Sora', folder: 'tokinoSora' },

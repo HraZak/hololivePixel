@@ -9,19 +9,24 @@
     from {
         top: 28px;
     }
+
     to {
         top: 40px;
     }
 }
+
 @keyframes aniBearMini {
     from {
         top: 14px;
     }
+
     to {
         top: 20px;
     }
 }
+
 @keyframes aniShake {
+
     0%,
     4%,
     8%,
@@ -30,10 +35,12 @@
     100% {
         transform: rotate(0deg);
     }
+
     6%,
     14% {
         transform: rotate(-3deg);
     }
+
     2%,
     10% {
         transform: rotate(3deg);
@@ -44,11 +51,13 @@
 body {
     background-color: #8cc8e4;
 }
+
 img {
     user-select: none;
     image-rendering: pixelated;
 }
-noscript > div {
+
+noscript>div {
     display: block;
     font-size: xx-large;
     color: #ff0000;
@@ -57,6 +66,7 @@ noscript > div {
     border-radius: 0 0 1em 1em;
     text-align: center;
 }
+
 .grid {
     margin: 22px 75px;
     display: grid;
@@ -66,24 +76,26 @@ noscript > div {
     gap: 22px 75px;
     grid-template-columns: repeat(8, 164px);
 }
+
 .mainPhoto {
     grid-column: 1 / -1;
     width: 100%;
     max-width: 914px;
 }
+
 .photos {
     position: relative;
     width: 164px;
     height: 218px;
 
-    > img {
+    >img {
         position: absolute;
         bottom: 0;
         width: 164px;
         height: 208px;
     }
 
-    > div.bookmark {
+    >div.bookmark {
         position: absolute;
         top: 0;
         right: 8px;
@@ -95,17 +107,15 @@ noscript > div {
         border-bottom: none;
     }
 
-    > img.shake {
-        @include animation(
-            $name: aniShake,
+    >img.shake {
+        @include animation($name: aniShake,
             $duration: 3s,
             $delay: 1s,
             $iteration-count: infinite,
-            $timing-function: linear
-        );
+            $timing-function: linear);
     }
 
-    > div.hide {
+    >div.hide {
         display: none;
     }
 
@@ -113,6 +123,7 @@ noscript > div {
         transform: scale(1);
     }
 }
+
 .page {
     position: absolute;
     width: 280px;
@@ -127,7 +138,7 @@ noscript > div {
     box-shadow: 0px 0px 10px #000000;
     @include transition($property: all, $duration: 0.2s, $timing-function: ease-in-out);
 
-    > img {
+    >img {
         width: 128px;
         height: 220px;
         @include transition($property: all, $duration: 0.2s);
@@ -139,37 +150,42 @@ noscript > div {
         position: absolute;
         top: 28px;
         z-index: 1;
-        @include animation(
-            $name: aniBear,
+        @include animation($name: aniBear,
             $duration: 2s,
             $iteration-count: infinite,
             $direction: alternate,
-            $timing-function: linear
-        );
+            $timing-function: linear);
     }
+
     .firstBear {
         height: 38px;
         left: 116px;
     }
+
     .secondBear {
         height: 40px;
         right: -12px;
     }
 }
-.pekora > img {
+
+.pekora>img {
     height: 222px;
 }
+
 .first,
 .second {
     position: absolute;
     bottom: 6px;
 }
+
 .first {
     left: 6px;
 }
+
 .second {
     right: 6px;
 }
+
 footer {
     grid-column: 1 / -1;
     justify-self: stretch;
@@ -196,12 +212,14 @@ footer {
         margin-left: 3px;
     }
 }
+
 @media screen and (max-width: 1987px) {
     .grid {
         grid-template-columns: repeat(auto-fill, 164px);
         justify-content: space-evenly;
     }
 }
+
 @media screen and (max-width: 960px) {
     footer {
         flex-direction: column;
@@ -209,24 +227,26 @@ footer {
         line-height: 1.75em;
     }
 }
+
 @media screen and (max-width: 584px) {
     .grid {
         margin: 11px 37px;
         gap: 11px 37px;
         grid-template-columns: repeat(auto-fill, 82px);
     }
+
     .photos {
         width: 82px;
         height: 109px;
 
-        > img {
+        >img {
             position: absolute;
             bottom: 0;
             width: 82px;
             height: 104px;
         }
 
-        > div.bookmark {
+        >div.bookmark {
             position: absolute;
             top: 0;
             right: 4px;
@@ -238,6 +258,7 @@ footer {
             border-bottom: none;
         }
     }
+
     .page {
         width: 140px;
         height: 116px;
@@ -247,7 +268,7 @@ footer {
         bottom: -4px;
         box-shadow: 0px 0px 5px #000000;
 
-        > img {
+        >img {
             width: 64px;
             height: 110px;
         }
@@ -258,28 +279,35 @@ footer {
             width: 15px;
             animation-name: aniBearMini;
         }
+
         .firstBear {
             height: 19px;
             left: 58px;
         }
+
         .secondBear {
             height: 20px;
             right: -6px;
         }
     }
-    .pekora > img {
+
+    .pekora>img {
         height: 111px;
     }
+
     .first,
     .second {
         bottom: 3px;
     }
+
     .first {
         left: 3px;
     }
+
     .second {
         right: 3px;
     }
+
     footer {
         font-size: 0.75em;
     }

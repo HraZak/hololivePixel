@@ -8,10 +8,10 @@ This is a fan-made website, and does NOT represent the interests of Hololive Pro
 
 ## Compile
 
-### CSS
+### Sass
 
 ```Shell
-sass --style=compressed --no-source-map style.scss style.css
+sass --style=compressed --no-source-map css/style.scss css/style.css
 ```
 
 ### TypeScript

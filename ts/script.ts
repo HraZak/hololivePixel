@@ -41,12 +41,12 @@ const characters = [
         special: function (page) {
             const firstBear = document.createElement('img');
             firstBear.classList.add('firstBear');
-            firstBear.src = `./img/yukihanaLamy/bear1.webp`;
+            firstBear.src = `./img/yukihanaLamy/bear1.png`;
             firstBear.alt = `Yukihana Lamy - Bear - front view`;
 
             const secondBear = document.createElement('img');
             secondBear.classList.add('secondBear');
-            secondBear.src = `./img/yukihanaLamy/bear2.webp`;
+            secondBear.src = `./img/yukihanaLamy/bear2.png`;
             secondBear.alt = `Yukihana Lamy - Bear - side view`;
 
             page.append(firstBear, secondBear);
@@ -65,9 +65,9 @@ function changeSrc(character) {
     const first: HTMLImageElement = document.querySelector(`#${character.folder} div.page img.first`);
     const second: HTMLImageElement = document.querySelector(`#${character.folder} div.page img.second`);
 
-    first.src = `./img/${character.folder}/1.webp`;
+    first.src = `./img/${character.folder}/1.png`;
 
-    second.src = `./img/${character.folder}/2.webp`;
+    second.src = `./img/${character.folder}/2.png`;
 
     if (character.special) {
         character.special(document.querySelector(`#${character.folder} div.page`));
@@ -101,7 +101,7 @@ function createPhotos(character) {
     footer.before(photos);
 
     const book = document.createElement('img');
-    book.src = `./img/${character.folder}/book.webp`;
+    book.src = `./img/${character.folder}/book.png`;
     book.alt = `${character.name} - book`;
     book.addEventListener('load', addLoadedImg);
     book.addEventListener('error', addLoadedImg);

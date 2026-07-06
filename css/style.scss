@@ -190,7 +190,10 @@ footer {
 
     @include mixins.flex-conteiner($justify-content: space-evenly);
 
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
 
     a {
         color: rgb(0, 0, 238);

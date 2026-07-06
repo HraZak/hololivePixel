@@ -10,6 +10,8 @@ This is a fan-made website, and does NOT represent the interests of Hololive Pro
 
 ### Sass
 
+Version: 1.101.0
+
 ```Shell
 sass --style=compressed --no-source-map css/style.scss css/style.css
 ```

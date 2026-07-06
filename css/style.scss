@@ -1,5 +1,5 @@
 // Import scss
-@import './mixins';
+@use './mixins';
 
 // Keyframes
 @keyframes aniBear {
@@ -105,7 +105,7 @@ noscript>div {
     }
 
     >img.shake {
-        @include animation($name: aniShake,
+        @include mixins.animation($name: aniShake,
             $duration: 3s,
             $delay: 1s,
             $iteration-count: infinite,
@@ -133,12 +133,12 @@ noscript>div {
     transform: scale(0, 1);
     z-index: 1;
     box-shadow: 0px 0px 10px rgb(0, 0, 0);
-    @include transition($property: all, $duration: 0.2s, $timing-function: ease-in-out);
+    @include mixins.transition($property: all, $duration: 0.2s, $timing-function: ease-in-out);
 
     >img {
         width: 128px;
         height: 220px;
-        @include transition($property: all, $duration: 0.2s);
+        @include mixins.transition($property: all, $duration: 0.2s);
     }
 
     .firstBear,
@@ -147,7 +147,7 @@ noscript>div {
         position: absolute;
         top: 28px;
         z-index: 1;
-        @include animation($name: aniBear,
+        @include mixins.animation($name: aniBear,
             $duration: 2s,
             $iteration-count: infinite,
             $direction: alternate,
@@ -188,7 +188,7 @@ footer {
     justify-self: stretch;
     text-align: center;
 
-    @include flex-conteiner($justify-content: space-evenly);
+    @include mixins.flex-conteiner($justify-content: space-evenly);
 
     font-family: 'Roboto Mono', monospace;
 

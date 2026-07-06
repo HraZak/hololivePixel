@@ -1,1 +1,10 @@
+* text=auto
+
+*.css text diff=css
+*.html text diff=html
 *.png binary
+*.js text
+*.json text
+*.scss text diff=css
+*.ts text
+*.md text diff=markdown
